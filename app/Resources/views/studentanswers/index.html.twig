@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Studentanswers list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Dateofanswer</th>
+                <th>Comments</th>
+                <th>Satisfactoryyn</th>
+                <th>Studentanswertext</th>
+                <th>Otherdetails</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for studentAnswer in studentAnswers %}
+            <tr>
+                <td><a href="{{ path('studentanswers_show', { 'id': studentAnswer.id }) }}">{{ studentAnswer.id }}</a></td>
+                <td>{% if studentAnswer.dateOfAnswer %}{{ studentAnswer.dateOfAnswer|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ studentAnswer.comments }}</td>
+                <td>{{ studentAnswer.satisfactoryYN }}</td>
+                <td>{{ studentAnswer.studentAnswerText }}</td>
+                <td>{{ studentAnswer.otherDetails }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('studentanswers_show', { 'id': studentAnswer.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('studentanswers_edit', { 'id': studentAnswer.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('studentanswers_new') }}">Create a new studentAnswer</a>
+        </li>
+    </ul>
+{% endblock %}

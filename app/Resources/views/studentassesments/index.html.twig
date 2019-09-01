@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Studentassesments list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Studentanswertext</th>
+                <th>Satisfactoryyn</th>
+                <th>Assesment</th>
+                <th>Otherdetails</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for studentAssesment in studentAssesments %}
+            <tr>
+                <td><a href="{{ path('studentassesments_show', { 'id': studentAssesment.id }) }}">{{ studentAssesment.id }}</a></td>
+                <td>{{ studentAssesment.studentAnswerText }}</td>
+                <td>{{ studentAssesment.satisfactoryYN }}</td>
+                <td>{{ studentAssesment.assesment }}</td>
+                <td>{{ studentAssesment.otherDetails }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('studentassesments_show', { 'id': studentAssesment.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('studentassesments_edit', { 'id': studentAssesment.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('studentassesments_new') }}">Create a new studentAssesment</a>
+        </li>
+    </ul>
+{% endblock %}

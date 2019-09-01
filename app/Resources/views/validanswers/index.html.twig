@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Validanswers list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Validanswertext</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for validAnswer in validAnswers %}
+            <tr>
+                <td><a href="{{ path('validanswers_show', { 'id': validAnswer.id }) }}">{{ validAnswer.id }}</a></td>
+                <td>{{ validAnswer.validAnswerText }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('validanswers_show', { 'id': validAnswer.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('validanswers_edit', { 'id': validAnswer.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('validanswers_new') }}">Create a new validAnswer</a>
+        </li>
+    </ul>
+{% endblock %}

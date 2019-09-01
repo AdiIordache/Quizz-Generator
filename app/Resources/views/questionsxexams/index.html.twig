@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Questionsxexams list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for questionsXExam in questionsXExams %}
+            <tr>
+                <td><a href="{{ path('questionsxexams_show', { 'id': questionsXExam.id }) }}">{{ questionsXExam.id }}</a></td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('questionsxexams_show', { 'id': questionsXExam.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('questionsxexams_edit', { 'id': questionsXExam.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('questionsxexams_new') }}">Create a new questionsXExam</a>
+        </li>
+    </ul>
+{% endblock %}

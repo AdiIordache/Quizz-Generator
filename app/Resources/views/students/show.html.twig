@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Student</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ student.id }}</td>
+            </tr>
+            <tr>
+                <th>Firstname</th>
+                <td>{{ student.firstName }}</td>
+            </tr>
+            <tr>
+                <th>Middlename</th>
+                <td>{{ student.middleName }}</td>
+            </tr>
+            <tr>
+                <th>Lastname</th>
+                <td>{{ student.lastName }}</td>
+            </tr>
+            <tr>
+                <th>Gender</th>
+                <td>{{ student.gender }}</td>
+            </tr>
+            <tr>
+                <th>Studentaddress</th>
+                <td>{{ student.studentAddress }}</td>
+            </tr>
+            <tr>
+                <th>Emailadress</th>
+                <td>{{ student.emailAdress }}</td>
+            </tr>
+            <tr>
+                <th>Cellmobilephone</th>
+                <td>{{ student.cellMobilePhone }}</td>
+            </tr>
+            <tr>
+                <th>Otherdetails</th>
+                <td>{% if student.otherDetails %}{{ student.otherDetails|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('students_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('students_edit', { 'id': student.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

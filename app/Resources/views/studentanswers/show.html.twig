@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Studentanswer</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ studentAnswer.id }}</td>
+            </tr>
+            <tr>
+                <th>Dateofanswer</th>
+                <td>{% if studentAnswer.dateOfAnswer %}{{ studentAnswer.dateOfAnswer|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Comments</th>
+                <td>{{ studentAnswer.comments }}</td>
+            </tr>
+            <tr>
+                <th>Satisfactoryyn</th>
+                <td>{{ studentAnswer.satisfactoryYN }}</td>
+            </tr>
+            <tr>
+                <th>Studentanswertext</th>
+                <td>{{ studentAnswer.studentAnswerText }}</td>
+            </tr>
+            <tr>
+                <th>Otherdetails</th>
+                <td>{{ studentAnswer.otherDetails }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('studentanswers_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('studentanswers_edit', { 'id': studentAnswer.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
